@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wombu Academy</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to shared stylesheet -->
+</head>
+<body>
+  <header>
+      <h1>Welcome to Wombu Academy</h1>
+      <p class="highlight">Empowering Future Leaders Through Education</p>
+  </header>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="academics.html">Academics</a>
+      <a href="results.html">Results</a>
+      <span class="admin-icon" onclick="showAdminAccess()">🔒 Admin Access</span>
+      <a href="contact.html">Contact Us</a>
+  </nav>
+  <div class="container">
+      <h2>Announcements</h2>
+      <p>Welcome back to a new academic year! Check out our upcoming events and activities.</p>
+      <h2>Upcoming Events</h2>
+      <ul>
+          <li>Open House: September 15, 2025</li>
+          <li>Parent-Teacher Conferences: October 10-11, 2025</li>
+          <li>Fall Festival: November 20, 2025</li>
+      </ul>
+  </div>
+  <footer>
+      <p>&copy; 2025 Wombu Academy. All rights reserved.</p>
+  </footer>
+  <script>
+      function showAdminAccess() {
+          const password = prompt("Enter password:");
+          if (password === "1234") {
+              window.location.href = "admin.html"; // Redirect to admin page
+          } else {
+              alert("Incorrect password. Access denied.");
+          }
+      }
+  </script>
+</body>
+</html>
