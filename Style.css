@@ -79,6 +79,12 @@ ul {
 
 /* --- Header Styles --- */
 #header {
+     background-image: url(logo.jpg); /* Keep this if you intend to add a background image via CSS */
+    background-position: center; /* Changed from cover for better centering of images */
+    background-size: cover; /* Use background-size for cover effect */
+    background-repeat: no-repeat;
+    background-color: var(--darker-background); /* Typically, headers have a solid background */
+    padding: 10px 0;
     background-color: var(--darker-background);
     border-bottom: none; /* Secondary nav will handle the border */
     position: relative; /* If you add sticky/fixed header later */
