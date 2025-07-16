@@ -42,7 +42,7 @@ a:hover {
 
 /* Header Styles */
 #header {
-    background-image: url(); /* Keep this if you intend to add a background image via CSS */
+    background-image: url(logo.jpg); /* Keep this if you intend to add a background image via CSS */
     background-position: center; /* Changed from cover for better centering of images */
     background-size: cover; /* Use background-size for cover effect */
     background-repeat: no-repeat;
