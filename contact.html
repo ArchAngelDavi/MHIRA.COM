@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Home & Glow</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlalH4f1sK86u+R/1R9s9S08Xf9cK2m/2eT/Gz4z1c7c9wXJj8T2lK2f2z4p0w+h9vH2f6t7e5v5b5e3x9Cg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="contact.css"> </head>
+<body>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="contact-content">
+            <div class="contact-form">
+                <form id="contactForm" name="contactform" action="contact.php" method="post">
+                    <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+                    <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+                    <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="image-container">
+                <img src="/logo.jpg" alt="Home & Glow Logo" class="contact-image"> </div>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <h3>Follow Us</h3>
+        <a href="https://www.facebook.com/groups/4358462641053146/?ref=share&mibextid=NSMWBT" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a> <a href="https://www.instagram.com/mhira6923?igsh=enBvcGlxeGc1eTcw" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@homeandglowpreorder?_t=ZM-8xy55GehCTQ&_r=1" target="_blank" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <img src="./resource/loading-yellow.gif" alt="Loading..." class="loading-gif">
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.classList.add('loading-overlay--active'); // Show the loading overlay
+
+            // Simulate form submission delay or wait for actual AJAX response
+            // For a real form, you'd send data with fetch() or XMLHttpRequest here
+            // and hide the overlay/redirect based on the server response.
+
+            // Simulate GIF animation duration then redirect
+            setTimeout(() => {
+                loadingOverlay.classList.remove('loading-overlay--active'); // Hide the overlay
+                window.location.href = './thnks.html'; // Redirect to the home page
+            }, 3000); // Adjust this timeout to match your GIF's natural loop duration
+        });
+    </script>
+
+</body>
+</html>

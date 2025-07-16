@@ -1,169 +1,143 @@
-* {
-    box-sizing: border-box;
+/* Color Variables */
+:root {
+    --primary-gold: #d4af37;
+    --dark-gold: #a67c1b;
+    --dark-background: #1a1a1a;
+    --darker-background: #2b2b2b;
+    --light-text: #e5e5e5;
+    --white-color: #fff;
+    --dark-text: #1a1a1a; /* For text on gold background */
+    --light-grey: #f3f3f3;
+    --medium-grey: #888;
 }
 
+/* General Styles */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-background); /* Consistent with previous refactor */
+    color: var(--white-color); /* Consistent with previous refactor */
+    line-height: 1.6; /* Added for better readability */
 }
 
-header {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    animation: fadeIn 1s ease;
+/* Base list styling for common use cases */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.highlight {
-    font-style: italic;
-    font-weight: bold;
+/* Anchor (Link) Styles - General */
+a {
+    color: var(--primary-gold); /* Consistent with previous refactor */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-nav {
-    background-color: #0056b3;
-    padding: 15px;
+a:hover {
+    color: var(--dark-gold); /* Consistent with previous refactor */
+}
+
+---
+
+/* Header Styles */
+#header {
+    background-image: url(); /* Keep this if you intend to add a background image via CSS */
+    background-position: center; /* Changed from cover for better centering of images */
+    background-size: cover; /* Use background-size for cover effect */
+    background-repeat: no-repeat;
+    background-color: var(--darker-background); /* Typically, headers have a solid background */
+    padding: 10px 0;
+}
+
+#header-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+---
+
+/* Secondary Navigation (Ticker Effect) */
+.secondary-nav {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 10px 0;
+    background-color: var(--darker-background); /* Using variable */
+    border-bottom: 2px solid var(--primary-gold); /* Using variable */
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    position: relative;
 }
 
-nav a, .admin-icon {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    position: relative;
+.secondary-nav .container {
+    width: 100%;
+}
+
+.ticker-container {
+    width: 100%;
     overflow: hidden;
-}
-
-nav a:hover, .admin-icon:hover {
-    background-color: #003f7f;
-    transform: scale(1.05);
-}
-
-nav a::after, .admin-icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: white;
-    left: 0;
-    bottom: 0;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-nav a:hover::after, .admin-icon:hover::after {
-    transform: scaleX(1);
-}
-
-.container {
-    padding: 20px;
-    flex-grow: 1;
-}
-
-h2 {
-    color: #007bff;
-    animation: slideIn 0.5s ease forwards;
-    opacity: 0;
-}
-
-.container h2:nth-of-type(1) {
-    animation-delay: 0.2s;
-}
-
-.container h2:nth-of-type(2) {
-    animation-delay: 0.4s;
-}
-
-p {
-    animation: fadeIn 1s ease forwards;
-    opacity: 0;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    background: #e7f1ff;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: bounceIn 0.5s ease forwards;
-    opacity: 0;
-}
-
-ul li:nth-child(1) {
-    animation-delay: 0.6s;
-}
-
-ul li:nth-child(2) {
-    animation-delay: 0.8s;
-}
-
-ul li:nth-child(3) {
-    animation-delay: 1s;
-}
-
-ul li:hover {
-    background-color: #d0e1ff;
-    transform: translateY(-3px);
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #0056b3;
-    color: white;
     position: relative;
-    bottom: 0;
-    width: 100%;
+    height: 25px; /* Adjust height as needed to fit text */
 }
 
-/* Keyframes for animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.ticker-wrap {
+    display: inline-block;
+    position: absolute;
+    left: 100%;
+    animation: ticker-animation 12s linear infinite; /* Consistent with previous discussions for infinite loop and pause */
+    animation-fill-mode: forwards;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.ticker-item {
+    display: inline-block;
+    margin-right: 50px;
+    color: var(--primary-gold); /* Using variable */
+    font-weight: 600;
+    padding: 0 5px;
+    vertical-align: middle;
 }
 
-@keyframes bounceIn {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    60% {
-        transform: translateY(-10px);
-        opacity: 1;
-    }
-    80% {
-        transform: translateY(5px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+@keyframes ticker-animation {
+    0% { transform: translateX(0); } /* Start at 0% (relative to its initial left: 100%) */
+    45% { transform: translateX(-100%); } /* Scroll to the left by its full width (adjust this percentage for scroll speed) */
+    50% { transform: translateX(-100%); } /* Hold position for the first part of the pause */
+    95% { transform: translateX(-100%); } /* Hold position for the second part of the pause */
+    100% { transform: translateX(0); } /* Reset to starting position to loop */
 }
+
+---
+
+/* Primary Navigation Styles */
+.primary-nav {
+    padding: 20px 0;
+}
+
+.menu-list {
+    display: flex;
+    justify-content: center;
+    /* list-style, padding, margin are handled by the base ul rule */
+}
+
+.menu-list li {
+    margin: 0 15px;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: var(--primary-gold); /* Using variable */
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease; /* Added background transition for consistency */
+    padding: 5px 0; /* Added padding for a larger clickable area, consistent with earlier discussions */
+    display: block; /* Makes the padding apply to the whole link area */
+}
+
+.menu-list a:hover {
+    color: var(--dark-text); /* Using variable for text on hover */
+    background-color: var(--primary-gold); /* Using variable for background on hover */
+    border-radius: 3px; /* Consistent with earlier discussions */
+}
+
+/* Remaining sections (Site Banner, Buttons, Contact, Footer, etc.) would follow here,
+   maintaining consistency with the color variables and general structure. */

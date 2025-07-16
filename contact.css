@@ -1,0 +1,248 @@
+/* Color Variables (ensure these match your main site's variables if possible) */
+:root {
+    --primary-gold: #d4af37; /* A rich, classic gold */
+    --dark-gold: #a67c1b;   /* A slightly darker gold for hover states */
+    --text-dark: #333;      /* Dark text for content on light backgrounds */
+    --white-transparent: rgba(255, 255, 255, 0.9); /* Slightly transparent white for containers */
+    --background-dark: #1a1a1a; /* Assuming your main site uses a dark body background */
+}
+
+/* --- General Body and Layout --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background: url('../images/contact-background.jpg') no-repeat center center fixed; /* Path relative to CSS file */
+    background-size: cover;
+    color: var(--text-dark); /* Default text color for the page */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Stack main container and social links vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+/* --- Main Container --- */
+.container {
+    max-width: 800px;
+    width: 90%; /* Responsive width */
+    padding: 30px; /* Increased padding */
+    background: var(--white-transparent);
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+    margin-bottom: 20px; /* Space between main container and social links */
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-gold);
+    margin-bottom: 30px; /* More space below heading */
+    font-size: 2.8rem; /* Larger heading */
+    font-weight: 700; /* Bolder heading */
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Align items to the top */
+    gap: 40px; /* More space between form and image */
+}
+
+/* --- Contact Form --- */
+.contact-form {
+    flex: 2; /* Form takes more space than image */
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 18px; /* Slightly more space between fields */
+    border: 2px solid var(--primary-gold);
+    border-radius: 8px; /* More rounded inputs */
+    font-size: 1.1rem; /* Slightly larger text in inputs */
+    color: var(--text-dark);
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--dark-gold);
+    outline: none;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); /* Gold glow on focus */
+}
+
+.contact-form button {
+    background-color: var(--primary-gold);
+    color: #fff;
+    border: none;
+    padding: 16px 25px; /* Larger button */
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.3rem; /* Larger button text */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    width: 100%; /* Make button full width of form */
+}
+
+.contact-form button:hover {
+    background-color: var(--dark-gold);
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* --- Image Container (Oval Shape) --- */
+.image-container {
+    flex: 1; /* Image container takes less space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px; /* Ensure visual separation */
+    /* New styles for the oval container */
+    width: 180px; /* Define width for the oval */
+    height: 220px; /* Define height for the oval (adjust for desired oval shape) */
+    border-radius: 50% / 40%; /* Creates an oval shape (horizontal radius / vertical radius) */
+    overflow: hidden; /* Clips the image to the oval shape */
+    background-color: var(--primary-gold); /* Background color for the oval */
+    border: 3px solid var(--dark-gold); /* Border for the oval */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Shadow for the oval container */
+    flex-shrink: 0; /* Prevent it from shrinking too much */
+    margin-top: 20px; /* Adjust vertical position if needed */
+}
+
+.contact-image {
+    width: 100%; /* Make image fill the container */
+    height: 100%; /* Make image fill the container */
+    object-fit: cover; /* Ensures the image covers the entire oval area without distortion */
+    border-radius: 0; /* Remove border-radius from the image itself */
+    box-shadow: none; /* Remove box-shadow from the image itself */
+}
+
+/* --- Social Links --- */
+.social-links {
+    text-align: center;
+    margin-top: 30px; /* Space from main container */
+    padding: 25px; /* Padding for social links container */
+    background: var(--white-transparent);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    max-width: 800px; /* Match main container width */
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links h3 {
+    color: var(--primary-gold);
+    margin-bottom: 20px; /* More space below heading */
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.social-links .fa-brands { /* Use .fa-brands for newer Font Awesome classes */
+    margin: 0 18px; /* Space between icons */
+    color: var(--primary-gold);
+    font-size: 2.2rem; /* Larger icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links .fa-brands:hover {
+    color: var(--dark-gold);
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* --- Loading Overlay (for form submission) --- */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease; /* Smooth fade in/out */
+}
+
+.loading-overlay--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-gif {
+    width: 180px; /* Adjust size of your GIF */
+    height: 180px;
+    object-fit: contain; /* Ensure GIF fits within bounds without distortion */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack items vertically */
+        padding: 25px;
+        width: 95%; /* Adjust width for smaller screens */
+    }
+    .contact-content {
+        flex-direction: column;
+        gap: 30px; /* Adjust gap when stacked */
+    }
+    .image-container {
+        padding-left: 0; /* Remove left padding */
+        margin-top: 20px; /* Add top margin when stacked */
+        /* Adjust oval size for smaller screens */
+        width: 150px;
+        height: 180px;
+    }
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+    .contact-form button {
+        font-size: 1.1rem;
+        padding: 14px 20px;
+    }
+    .social-links {
+        padding: 20px;
+        width: 95%;
+    }
+    .social-links .fa-brands {
+        font-size: 1.8rem;
+        margin: 0 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    .contact-form button {
+        font-size: 1rem;
+        padding: 12px 18px;
+    }
+    .social-links .fa-brands {
+        font-size: 1.5rem;
+        margin: 0 10px;
+    }
+    .loading-gif {
+        width: 150px;
+        height: 150px;
+    }
+}

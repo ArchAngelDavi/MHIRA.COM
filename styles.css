@@ -1,0 +1,495 @@
+/* Color Variables */
+:root {
+    --primary-gold: #d4af37; /* A rich, classic gold */
+    --dark-gold: #a67c1b;   /* A slightly darker gold for hover states */
+    --dark-background: #1a1a1a; /* Deep black for main background */
+    --darker-background: #2b2b2b; /* Slightly lighter black/dark grey for headers/footers */
+    --light-text: #e5e5e5; /* Off-white for general text on dark backgrounds */
+    --white-color: #fff;    /* Pure white for specific elements */
+    --dark-text: #1a1a1a;   /* Dark text for use on light/gold backgrounds */
+    --light-grey: #f3f3f3;  /* Very light grey for preloader border */
+    --medium-grey: #888;    /* Medium grey for placeholders */
+}
+
+/* --- General Styles --- */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-background);
+    color: var(--light-text); /* Default text color across the site */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base link styles */
+a {
+    color: var(--primary-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--dark-gold);
+}
+
+/* Base list styles - useful for menus, footers, etc. */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Utility Classes (assuming a basic grid/flex system like Bootstrap) --- */
+.container {
+    max-width: 1200px; /* Adjust as per your design's container width */
+    margin: 0 auto;
+    padding-left: 15px; /* Basic padding for smaller screens */
+    padding-right: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px; /* Counteract column padding */
+    margin-right: -15px;
+}
+
+/* Basic column definitions (adjust breakpoints and widths as needed) */
+.col-lg-2, .col-lg-10, .col-md-2, .col-md-4, .col-md-6, .col-md-10, .col-md-12, .col-sm-6 {
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box; /* Include padding in element's total width */
+}
+
+.col-md-4 { width: 33.33%; }
+.col-md-6 { width: 50%; }
+.col-md-12 { width: 100%; }
+
+/* Flex utilities */
+.d-flex { display: flex; }
+.align-items-center { align-items: center; }
+.justify-content-end { justify-content: flex-end; }
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+.text-center { text-align: center; }
+.list-unstyled { list-style: none; padding: 0; margin: 0; } /* For explicit list-unstyled use */
+
+
+/* --- Header Styles --- */
+#header {
+    background-color: var(--darker-background);
+    border-bottom: none; /* Secondary nav will handle the border */
+    position: relative; /* If you add sticky/fixed header later */
+    z-index: 100; /* Ensure header is on top */
+}
+
+#header-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-logo img {
+    max-width: 180px; /* Adjusted slightly to fit design, override if needed */
+    height: auto;
+    display: block; /* Remove extra space below image */
+}
+
+/* --- Secondary Navigation (Ticker Effect) --- */
+.secondary-nav {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 10px 0;
+    background-color: var(--darker-background);
+    border-bottom: 2px solid var(--primary-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 40px; /* Give it a fixed height */
+}
+
+.secondary-nav .container {
+    width: 100%; /* Ensure container fills secondary-nav */
+    overflow: hidden; /* Important for ticker to hide outside container */
+}
+
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 25px; /* Height of the visible ticker area */
+    display: flex;
+    align-items: center; /* Vertically center ticker items */
+}
+
+.ticker-wrap {
+    display: inline-block;
+    position: absolute; /* positioned relative to .ticker-container */
+    left: 100%; /* Start off-screen to the right */
+    animation: ticker-animation 12s linear infinite; /* 6s scroll + 6s pause = 12s total cycle */
+    animation-fill-mode: forwards;
+}
+
+.ticker-item {
+    display: inline-block; /* Arrange items horizontally */
+    margin-right: 50px; /* Space between ticker messages */
+    color: var(--primary-gold);
+    font-weight: 600;
+    font-size: 0.9em; /* Slightly smaller font for ticker */
+    padding: 0 5px;
+    vertical-align: middle;
+}
+
+/* Keyframe animation for the ticker */
+@keyframes ticker-animation {
+    0% { transform: translateX(0); }
+    45% { transform: translateX(-100%); } /* Scroll to the left by its full width */
+    50% { transform: translateX(-100%); } /* Hold position for the first part of the pause */
+    95% { transform: translateX(-100%); } /* Hold position for the second part of the pause */
+    100% { transform: translateX(0); } /* Reset to starting position for next loop */
+}
+
+/* --- Primary Navigation --- */
+.primary-nav {
+    padding: 20px 0;
+}
+
+.primary-nav .menu-list {
+    display: flex;
+    /* list-style, padding, margin are handled by the base ul rule */
+}
+
+.primary-nav .menu-list li {
+    margin: 0 15px; /* Spacing between menu items */
+}
+
+.primary-nav .menu-list a {
+    color: var(--primary-gold);
+    font-weight: 500;
+    padding: 8px 12px; /* Increased padding for better clickability */
+    display: block;
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: all 0.3s ease; /* Smooth transition for all changes */
+}
+
+.primary-nav .menu-list a:hover,
+.primary-nav .menu-list a.active {
+    color: var(--dark-text); /* Dark text on gold background */
+    background-color: var(--primary-gold);
+}
+
+/* Stellarnav specific styles if applicable (adjust as per your stellarnav.js) */
+.stellarnav {
+    /* Styles for the stellarnav container, often for alignment */
+}
+
+/* --- Site Banner --- */
+.site-banner {
+    background-size: cover;
+    background-position: top center !important; /* Ensure the top of the image is visible */
+    background-repeat: no-repeat;
+    color: var(--primary-gold); /* Text color for banner titles/breadcrumbs */
+    padding: 100px 0; /* Adjust padding for banner height */
+    text-align: center;
+}
+
+.site-banner .page-title {
+    font-size: 3em; /* Large title for impact */
+    margin-bottom: 10px;
+    color: var(--white-color); /* Title can be white for better contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional text shadow for readability */
+}
+
+.breadcrumbs {
+    font-size: 0.9em;
+    color: var(--light-text);
+}
+
+.breadcrumbs a {
+    color: var(--primary-gold);
+}
+
+/* --- Section Styling --- */
+.padding-large {
+    padding: 80px 0; /* Consistent large padding for sections */
+}
+
+.section-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after { /* Underline effect for titles */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-gold);
+    border-radius: 2px;
+}
+
+/* About Information Section */
+.about-information p {
+    margin-bottom: 1em;
+    line-height: 1.7;
+    font-size: 1.1em;
+    color: var(--light-text);
+}
+
+/* Promise Section */
+.promise {
+    background-color: var(--darker-background); /* Different background for contrast */
+    text-align: center;
+}
+
+.promise h2 {
+    color: var(--primary-gold);
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.promise ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Space between list items */
+}
+
+.promise li {
+    color: var(--white-color);
+    font-size: 1.1em;
+    background-color: var(--dark-background); /* A subtle background for each promise item */
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-gold); /* Gold border for promise boxes */
+    max-width: 300px;
+    text-align: center;
+}
+
+/* --- Contact Information Section --- */
+.contact-information {
+    background-color: var(--dark-background);
+}
+
+.contact-information p {
+    margin-bottom: 10px;
+    color: var(--light-text);
+}
+
+.contact-information a {
+    color: var(--primary-gold);
+    transition: color 0.3s ease;
+}
+
+.contact-information a:hover {
+    color: var(--dark-gold);
+}
+
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links h3 {
+    color: var(--primary-gold);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.social-links ul {
+    gap: 20px; /* Space between social icons */
+}
+
+.social-links a {
+    font-size: 28px; /* Larger icons */
+    color: var(--primary-gold);
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--dark-gold);
+    transform: translateY(-3px); /* Subtle hover effect */
+}
+
+/* --- Contact Form --- */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    background-color: var(--white-color); /* White background for inputs */
+    color: var(--dark-text); /* Dark text inside inputs */
+    border: 1px solid var(--primary-gold);
+    padding: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--medium-grey);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--dark-gold);
+    outline: none;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5); /* Subtle glow on focus */
+}
+
+.contact-form label {
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.contact-form label input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto;
+    min-width: 18px; /* Ensure checkbox is visible */
+    min-height: 18px;
+    accent-color: var(--primary-gold); /* Color for checked state */
+}
+
+.contact-form .btn {
+    width: auto; /* Reset width for button */
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+/* --- Buttons --- */
+.btn {
+    background-color: var(--primary-gold);
+    color: var(--dark-text);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--dark-gold);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* --- Google Map (iframes generally don't need styling here unless for positioning/sizing) --- */
+.google-map {
+    margin: 40px 0;
+}
+
+/* --- Footer --- */
+#footer {
+    background-color: var(--darker-background);
+    color: var(--light-text);
+    padding-top: 50px;
+    padding-bottom: 20px; /* Less padding at bottom due to footer-bottom */
+}
+
+.footer-menu-list .widget-title {
+    color: var(--primary-gold);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-menu-list ul li {
+    margin-bottom: 10px;
+}
+
+.footer-menu-list ul a {
+    color: var(--light-text);
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.footer-menu-list ul a:hover {
+    color: var(--primary-gold);
+}
+
+#footer-bottom {
+    background-color: var(--dark-background);
+    padding: 15px 0;
+    text-align: center;
+    color: var(--medium-grey); /* Slightly muted copyright text */
+    margin-top: 30px; /* Space from top part of footer */
+}
+
+
+
+/* --- Responsive Adjustments (Basic Examples) --- */
+@media (max-width: 992px) {
+    .primary-nav .menu-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .primary-nav .menu-list li {
+        margin: 10px 0;
+    }
+    .col-lg-2, .col-lg-10 {
+        width: 100%;
+        text-align: center;
+    }
+    .main-logo {
+        margin-bottom: 20px;
+    }
+    .social-links ul {
+        justify-content: center;
+    }
+    .footer-menu-list .col-lg-3, .col-md-6, .col-sm-6 {
+        width: 50%; /* Stack on smaller screens */
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-banner {
+        padding: 60px 0;
+    }
+    .site-banner .page-title {
+        font-size: 2.2em;
+    }
+    .section-title {
+        font-size: 2em;
+    }
+    .col-md-6 {
+        width: 100%;
+    }
+    .contact-form {
+        margin-top: 40px; /* Add space between text and form */
+    }
+    .promise ul {
+        flex-direction: column; /* Stack promise items */
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .ticker-item {
+        font-size: 0.8em;
+        margin-right: 30px;
+    }
+    .primary-nav .menu-list a {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+    .padding-large {
+        padding: 50px 0;
+    }
+}
